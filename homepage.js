@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const page2Bottom = page2Top + page2Height;
     const scrollTrigger = window.innerHeight * 0.6;
 
-    // Disable scroll initially
     page2.style.overflowY = 'hidden';
     page3.style.overflowY = 'hidden';
 
@@ -122,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInitialPage();
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Optional slider functionality
     let currentSlide = 0;
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
@@ -137,11 +135,10 @@ document.addEventListener('scroll', () => {
     const rect = page4.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Check if 50% or more of .page4 is in view
     if (rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5) {
-        page4.style.overflowY = 'auto'; // enable scroll
+        page4.style.overflowY = 'auto'; 
     } else {
-        page4.scrollTop = 0; // reset scroll
-        page4.style.overflowY = 'hidden'; // lock scroll
+        page4.scrollTop = 0; 
+        page4.style.overflowY = 'hidden';
     }
 });

@@ -39,8 +39,8 @@ header{
 
 a, li, button{
     font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-size: clamp(.1rem, .7vw, 1rem);
+    font-weight: 500;
+    font-size: .7rem;
     text-decoration: none;
     color: white;
     letter-spacing: 5px;
@@ -160,19 +160,27 @@ a, li, button{
 
 .page2-mainContent{
     position: relative;
+    width: 100%;
     height: 100%;
     transform-style: preserve-3d;
 }
 
-.page2 img{
-    width: 550px;
-    height: 700px;
-    position: absolute;
-    top: 280px;
-    left: 80px;
-    object-fit: contain;
-    z-index: 0;
+.long-image{
+    max-width: 40vw;
+    height: 1000px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 400px;
+    margin-left: 3vw;
 }
+
+.long-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 
 .content-2{
     position: absolute;
@@ -229,10 +237,10 @@ a, li, button{
     width: 200px;
     height: 50px;
     gap: 5px;
+    transform: translateZ(-5px) scale(1.5);
     position: absolute;
     top: 900px;
-    left: 980px;
-    transform: translateZ(-5px) scale(1.5);
+    left: 63%;
 }
 
 .page2-button button{
@@ -400,10 +408,7 @@ a, li, button{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-}
-
-.next-btn {
-    right: 100px;
+    right: 80px;
 }
 
 .prev-btn:hover,
@@ -412,36 +417,39 @@ a, li, button{
 }
 
 .slide-images{
+    display: flex;
     margin-left: 3%;
 }
 
-.slide img{
-    width: 120px;
-    height: 150px;
+.slide-images img{ 
+    max-width: 130px;   
+    height: auto;
     object-fit: cover;
+    display: block;
 }
 
 .slide #im1{
     margin-top: 300px;
     margin-left: 0;
+    flex-shrink: 1;
 }
 .slide #im2{
     margin-top: 200px;
-    margin-left: 180px;
+    margin-left: 3%;
 }
 .slide #im3{
     margin-top: 300px;
-    margin-left: 360px;
+    margin-left: 6%;
 }
 .slide #im4{
     margin-top: 200px;
-    margin-left: 540px;
+    margin-left: 9%;
 }
 
 .slide .slide-text{
     width: 300px;
     height: 200px;
-    margin-left: 830px;
+    margin-left: 13.5%;
     margin-top: 120px;
     text-align: right;
     font-family: "Arimo", sans-serif;
@@ -516,6 +524,54 @@ a, li, button{
     
 }
 
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.smartphone-sidebar{
+    list-style: none;
+}
+
+.smartphone-sidebar li{
+    height: 80px;
+}
+
+.smartphone-sidebar li a{
+    font-size: 1.8rem;
+}
+
+@media (max-width: 1307px) {
+
+    .slide-images{
+        margin-left: 2%;
+    }
+    .slide-images img{
+        width: 110px;
+    }
+    
+    .slide .slide-text h1{
+        font-size: 30px;
+    }
+    
+    .slide .slide-text p{
+        font-size: 15px;
+    }
+
+    .page4{
+        margin-bottom: 10px;
+    }
+
+}
 
 @media (max-width: 1070px) {
 
@@ -525,5 +581,6 @@ a, li, button{
 
     .nav-links li{
         padding: 0 .5vw;
-    }
+    }   
+    
 }

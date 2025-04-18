@@ -31,24 +31,16 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
+    padding: 0 clamp(100px, 2vw, 100px);
     z-index: 1000;
     background-color: var(--main-color); 
     transition: background-color 0.3s, background-image 0.3s, box-shadow 0.3s;
 }
 
-header.background-image {
-    background-color: var(--main-color); 
-    background-image: url('your-image.jpg'); 
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-}
-
 a, li, button{
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    font-size: 10px;
+    font-size: clamp(.1rem, .7vw, 1rem);
     text-decoration: none;
     color: white;
     letter-spacing: 5px;
@@ -60,7 +52,7 @@ a, li, button{
 
 .nav-links li{
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 1vw;
 }
 
 .order-button{
@@ -71,8 +63,10 @@ a, li, button{
 }
 
 .nav-logo{
-    width: 180px;
-    height: 200px;
+    max-width: 10vw;
+    min-width: 70px;
+    height: auto;
+    margin-top: 5px;
 }
 
 .page1 {
@@ -110,7 +104,7 @@ a, li, button{
     width: 100%;
     position: relative;
     top: 300px;
-    padding-left: 150px;
+    padding-left: 7vw;
     opacity: 1; 
     transition: opacity 0.3s ease; 
 }
@@ -153,7 +147,7 @@ a, li, button{
     position: relative;
     transition: transform 0.3s ease-out;
     background-color: var(--main-color);
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
     perspective: 10px;
     width: 100%;
@@ -271,7 +265,7 @@ a, li, button{
     height: 180vh;
     background-color: var(--main-color);
     position: relative;
-    overflow-y: scroll;
+    overflow-y: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     animation: fade linear both;
@@ -282,6 +276,8 @@ a, li, button{
     margin-top: 100px;
 }
 
+
+
 .page3 .page3-projectContent{
     transform-style: preserve-3d;
     height: 100%;
@@ -290,7 +286,8 @@ a, li, button{
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 330px;
+    margin-top: 200px;
+    top: 0;
 }
 
 .page3 img{
@@ -321,7 +318,7 @@ a, li, button{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    top: 620px;
+    top: 690px;
     transform: translateZ(-1px) scale(1.2);
     z-index: 100;
 }
@@ -353,9 +350,9 @@ a, li, button{
     width: 100%;
     height: 400px;
     background-color: white;
-    transform: translateZ(5px) scale(.5);
+    transform: translateZ(3px) scale(.7);
     overflow: hidden;
-    top: -300px
+    top: -390px
 }
 
 .slider-container {
@@ -465,7 +462,7 @@ a, li, button{
     width: 100%;
     height: 83vh;
     position: relative;
-    overflow-y: auto;
+    overflow-y: hidden;
     perspective: 10px;
     z-index: 20;
     scrollbar-width: none;
@@ -476,7 +473,7 @@ a, li, button{
     height: 100%;
     transform-style: preserve-3d;
     position: relative;
-    margin-top: 900px;
+    margin-top: 400px;
 }
 
 .highlight-text{
@@ -517,4 +514,16 @@ a, li, button{
     height: 100%;
     object-fit: cover;
     
+}
+
+
+@media (max-width: 1070px) {
+
+    header{
+        padding: 5vw;
+    }
+
+    .nav-links li{
+        padding: 0 .5vw;
+    }
 }

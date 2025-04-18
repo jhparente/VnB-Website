@@ -142,3 +142,54 @@ document.addEventListener('scroll', () => {
         page4.style.overflowY = 'hidden';
     }
 });
+
+document.addEventListener('scroll', () => {
+    const page1 = document.querySelector('.page1');
+    const page2 = document.querySelector('.page2');
+    const page3 = document.querySelector('.page3');
+    const page4 = document.querySelector('.page4');
+
+    const windowHeight = window.innerHeight;
+    const page1Rect = page1.getBoundingClientRect();
+    const page2Rect = page2.getBoundingClientRect();
+    const page3Rect = page3.getBoundingClientRect();
+
+    const page1VisibleHeight = Math.min(windowHeight, page1Rect.bottom) - Math.max(0, page1Rect.top);
+    const page1ScrollRatio = 1 - (page1VisibleHeight / page1.offsetHeight);
+
+    const page2VisibleHeight = Math.min(windowHeight, page2Rect.bottom) - Math.max(0, page2Rect.top);
+    const page2VisibilityRatio = page2VisibleHeight / page2.offsetHeight;
+
+    const page3VisibleHeight = Math.min(windowHeight, page3Rect.bottom) - Math.max(0, page3Rect.top);
+    const page3VisibilityRatio = page3VisibleHeight / page3.offsetHeight;
+
+    // Lock page2 unless 90% of page1 is scrolled
+    if (page1ScrollRatio < 0.9) {
+        page2.scrollTop = 0;
+        page2.style.pointerEvents = 'none';
+        page2.style.overflowY = 'hidden';
+    } else {
+        page2.style.pointerEvents = 'auto';
+        page2.style.overflowY = 'auto';
+    }
+
+    if (page2VisibilityRatio <= 0.1) {
+        page3.style.pointerEvents = 'auto';
+        page3.style.overflowY = 'auto';
+    } else {
+        page3.scrollTop = 0;
+        page3.style.pointerEvents = 'none';
+        page3.style.overflowY = 'hidden';
+    }
+
+    if (page3VisibilityRatio <= 0.2) {
+        page4.style.pointerEvents = 'auto';
+        page4.style.overflowY = 'auto';
+    } else {
+        page4.scrollTop = 0;
+        page4.style.pointerEvents = 'none';
+        page4.style.overflowY = 'hidden';
+    }
+});
+
+

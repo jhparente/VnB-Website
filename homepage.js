@@ -1,195 +1,139 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     const page1 = document.querySelector('.page1');
     const page2 = document.querySelector('.page2');
     const page3 = document.querySelector('.page3');
     const header = document.querySelector('header');
-    const video = document.querySelector('.background-video');
-    const content = document.querySelector('.content');
-    const track = document.querySelector('.slider-track');
-    const nextBtn = document.querySelector('.next-btn');
-
-    let isAnimating = false;
-    let lastScrollPos = window.scrollY;
-    let currentPage = 1;
-
-    const page1Height = page1.offsetHeight;
-    const page2Height = page2.offsetHeight;
-    const page2Top = page2.offsetTop;
-    const page2Bottom = page2Top + page2Height;
-    const scrollTrigger = window.innerHeight * 0.6;
+    const part = document.querySelector('.page2-mainContent');
 
     page2.style.overflowY = 'hidden';
-    page3.style.overflowY = 'hidden';
 
-    function updateVisuals(scrollY) {
-        const progress = Math.min(scrollY / page1Height, 1);
+    function updateHeaderStyle() {
+        const page1Height = page1.offsetHeight;
+        const scrollPosition = window.scrollY;
+        const scrollPercent = (scrollPosition / page1Height) * 100;
 
-        if (progress < 1) {
-            const scaleY = Math.max(1 - progress, 0.8);
-            video.style.transform = `scale(1, ${scaleY})`;
-            video.style.opacity = '1';
-            video.style.width = '100%';
-            video.style.height = '100%';
-            video.style.left = '0';
+        if (scrollPercent >= 55) {
+            header.style.backgroundColor = 'rgba(5, 68, 13, 1)';
+            header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)';
+            header.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
         } else {
-            video.style.opacity = '0';
-        }
-
-        if (progress < 0.6) {
-            header.style.backgroundColor = `rgba(5, 68, 13, 0)`;
+            header.style.backgroundColor = 'transparent';
             header.style.boxShadow = 'none';
+        }
+    }
+
+    // Check if .page2-mainContent is fully visible
+    function isPartFullyVisible() {
+        const rect = part.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        );
+    }
+
+    function updatePage2ScrollState() {
+        if (isPartFullyVisible()) {
+            page2.style.overflowY = 'auto';
         } else {
-            const fadeProgress = (progress - 0.6) / 0.4;
-            header.style.backgroundColor = `rgba(5, 68, 13, 1)`;
-            header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.5)';
-        }
-
-        content.style.opacity = 1 - progress;
-    }
-
-    function handleScroll() {
-        const scrollY = window.scrollY;
-        const direction = scrollY > lastScrollPos ? 'down' : 'up';
-        lastScrollPos = scrollY;
-
-        if (isAnimating) return;
-
-        updateVisuals(scrollY);
-
-        if (direction === 'down') {
-            if (currentPage === 1 && scrollY >= page1Height * 0.8) {
-                page2.style.overflowY = 'auto';
-                snapToPage(2);
-            } else if (currentPage === 2 && scrollY >= page2Bottom - window.innerHeight * 0.2) {
-                page3.style.overflowY = 'hidden';
-                snapToPage(3);
-                setTimeout(() => {
-                    page3.style.overflowY = 'auto';
-                }, 1000);
-            }
-        } else {
-            if (currentPage === 3 && scrollY <= page2Bottom + window.innerHeight * 0.2) {
-                page3.style.overflowY = 'hidden';
-                snapToPage(2);
-            } else if (currentPage === 2 && scrollY <= page1Height * 0.2) {
-                page2.style.overflowY = 'hidden';
-                snapToPage(1);
-            }
+            page2.style.overflowY = 'hidden';
+            page2.scrollTop = 0;
         }
     }
 
-    function snapToPage(pageNum) {
-        isAnimating = true;
-        currentPage = pageNum;
+    function checkScroll() {
+        updateHeaderStyle();
+        updatePage2ScrollState();
+    }
 
-        let targetY;
-        if (pageNum === 1) targetY = 0;
-        else if (pageNum === 2) targetY = page1Height;
-        else if (pageNum === 3) targetY = page2Bottom;
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', updatePage2ScrollState);
 
-        window.scrollTo({
-            top: targetY,
-            behavior: 'smooth'
-        });
-
-        if (pageNum === 1) {
-            video.style.transform = 'scale(1, 1)';
-            video.style.opacity = '1';
-            video.style.width = '100%';
-            video.style.height = '100%';
+    page2.addEventListener('wheel', function (e) {
+        if (!isPartFullyVisible()) {
+            e.preventDefault();
         }
+    }, { passive: false });
 
-        setTimeout(() => {
-            isAnimating = false;
-        }, 1000);
-    }
-
-    function setInitialPage() {
-        const scrollY = window.scrollY;
-
-        updateVisuals(scrollY);
-
-        if (scrollY < page1Height * 0.5) {
-            currentPage = 1;
-        } else if (scrollY < page2Bottom * 0.5) {
-            currentPage = 2;
-        } else {
-            currentPage = 3;
-        }
-    }
-
-    setInitialPage();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    let currentSlide = 0;
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % document.querySelectorAll('.slide').length;
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-        });
-    }
+    checkScroll();
+    updateHeaderStyle();
 });
 
-document.addEventListener('scroll', () => {
-    const page4 = document.querySelector('.page4');
-    const rect = page4.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+// Slider logic
+const nextBtn = document.querySelector(".next-btn");
+const sliderTrack = document.querySelector(".slider-track");
+const slides = document.querySelectorAll(".slide");
+let currentIndex = 0;
 
-    if (rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5) {
-        page4.style.overflowY = 'auto'; 
-    } else {
-        page4.scrollTop = 0; 
-        page4.style.overflowY = 'hidden';
+nextBtn.addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex >= slides.length) {    
+        currentIndex = 0;
     }
+    sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
 });
 
-document.addEventListener('scroll', () => {
-    const page1 = document.querySelector('.page1');
-    const page2 = document.querySelector('.page2');
-    const page3 = document.querySelector('.page3');
-    const page4 = document.querySelector('.page4');
+// Smooth scrolling
+let scrollAmount = 0;
+let isScrolling = false;
+let inertia = 0;
+let ticking = false;
+const speedMultiplier = 0.05;
+const damping = 0.91;
 
-    const windowHeight = window.innerHeight;
-    const page1Rect = page1.getBoundingClientRect();
-    const page2Rect = page2.getBoundingClientRect();
-    const page3Rect = page3.getBoundingClientRect();
+const page2 = document.querySelector('.page2');
+page2.style.maxHeight = '100vh';
+page2.style.scrollBehavior = 'smooth';
 
-    const page1VisibleHeight = Math.min(windowHeight, page1Rect.bottom) - Math.max(0, page1Rect.top);
-    const page1ScrollRatio = 1 - (page1VisibleHeight / page1.offsetHeight);
+function canScroll(element, deltaY) {
+    if (element === window || element === document.documentElement || element === document.body) {
+        return true;
+    }
+    if (deltaY < 0 && element.scrollTop > 0) return true;
+    if (deltaY > 0 && element.scrollTop + element.clientHeight < element.scrollHeight) return true;
+    return false;
+}
 
-    const page2VisibleHeight = Math.min(windowHeight, page2Rect.bottom) - Math.max(0, page2Rect.top);
-    const page2VisibilityRatio = page2VisibleHeight / page2.offsetHeight;
+window.addEventListener('wheel', function (e) {
+    const hovered = document.elementFromPoint(e.clientX, e.clientY);
+    const overPage2 = page2.contains(hovered);
 
-    const page3VisibleHeight = Math.min(windowHeight, page3Rect.bottom) - Math.max(0, page3Rect.top);
-    const page3VisibilityRatio = page3VisibleHeight / page3.offsetHeight;
+    e.preventDefault();
+    scrollAmount += e.deltaY * speedMultiplier;
+    isScrolling = true;
 
-    // Lock page2 unless 90% of page1 is scrolled
-    if (page1ScrollRatio < 0.9) {
-        page2.scrollTop = 0;
-        page2.style.pointerEvents = 'none';
-        page2.style.overflowY = 'hidden';
+    if (!ticking) {
+        animateScroll();
+        ticking = true;
+    }
+}, { passive: false });
+
+function animateScroll() {
+    let delta = scrollAmount || inertia;
+    let target;
+
+    const hovered = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
+    const overPage2 = page2.contains(hovered);
+    const page1StillVisible = document.querySelector('.page1').getBoundingClientRect().bottom > 0;
+
+    if (overPage2 && !page1StillVisible && canScroll(page2, delta)) {
+        target = page2;
     } else {
-        page2.style.pointerEvents = 'auto';
-        page2.style.overflowY = 'auto';
+        target = window;
     }
 
-    if (page2VisibilityRatio <= 0.1) {
-        page3.style.pointerEvents = 'auto';
-        page3.style.overflowY = 'auto';
+    if (Math.abs(scrollAmount) > 0.1) {
+        target.scrollBy({ top: scrollAmount, behavior: 'instant' });
+        inertia = scrollAmount;
+        scrollAmount *= damping;
+    } else if (isScrolling) {
+        isScrolling = false;
+    } else if (Math.abs(inertia) > 0.1) {
+        target.scrollBy({ top: inertia, behavior: 'instant' });
+        inertia *= damping;
     } else {
-        page3.scrollTop = 0;
-        page3.style.pointerEvents = 'none';
-        page3.style.overflowY = 'hidden';
+        ticking = false;
+        return;
     }
 
-    if (page3VisibilityRatio <= 0.2) {
-        page4.style.pointerEvents = 'auto';
-        page4.style.overflowY = 'auto';
-    } else {
-        page4.scrollTop = 0;
-        page4.style.pointerEvents = 'none';
-        page4.style.overflowY = 'hidden';
-    }
-});
-
-
+    requestAnimationFrame(animateScroll);
+}

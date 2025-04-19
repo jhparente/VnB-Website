@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <nav class="sidebar">
+        <!-- <nav class="sidebar">
             <ul class="smartphone-sidebar">
                 <li><a href="#">THE JOURNEY</a></li>
                 <li><a href="#">COLLECTIONS</a></li>
@@ -16,7 +16,7 @@
                 <li><a href="#">CONTACT US</a></li>
                 <li><a href="#">MY ACCOUNT</a></li>
             </ul>
-        </nav>
+        </nav> -->
         <nav id="fnav1">
             <ul class="nav-links">
                 <li><a href="#">THE JOURNEY</a></li>
@@ -34,11 +34,12 @@
         </nav>
     </header>
     <div class="page1"> 
-        <video autoplay muted loop class="background-video">
+        <div class="bg-video"><video autoplay muted loop class="background-video">
             <source src="assets/background-vid.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video> 
-
+                Your browser does not support the video tag.
+            </video> 
+        </div>
+        </div>
         <div class="content">
             <h1>GO THE</h1>
             <h1>EXTRA MILE</h1>
@@ -68,7 +69,15 @@
     </div>
     <div class="page3">
         <div class="page3-projectContent">
-            <img src="assets/vnb-image.jpg" alt="">
+            <div class="project-video">
+                <video autoplay muted loop class="highlight-video">
+                    <source src="assets/the-projects-video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="pic-invideo">
+                    <img src="assets/VnB Logo 2.png" alt="">
+                </div>
+            </div>
             <div class="project-header">
                 <h1>THE</h1>
                 <h1>PROJECTS</h1>
@@ -80,10 +89,10 @@
                 <div class="slider-track">
                     <div class="slide first-slide">
                         <div class="slide-images">
-                            <img src="assets/first-slide/im1.jpg" id="im1">
-                            <img src="assets/first-slide/im2.jpg" id="im2">
-                            <img src="assets/first-slide/im3.jpg" id="im3">
-                            <img src="assets/first-slide/im4.jpg" id="im4">
+                            <img src="assets/first-slide/im1.png" id="im1">
+                            <img src="assets/first-slide/im2.png" id="im2">
+                            <img src="assets/first-slide/im3.png" id="im3">
+                            <img src="assets/first-slide/im4.png" id="im4">
                             <div class="slide-text">
                                 <h1>Work Surfaces</h1>
                                 <p>Discover the perfect blend of durability and design with our premium work surfaces and tables, 
@@ -94,10 +103,10 @@
                     </div>
                     <div class="slide second-slide">
                         <div class="slide-images">
-                            <img src="assets/first-slide/im13.jpg" id="im1">
-                            <img src="assets/first-slide/im14.jpg" id="im2">
-                            <img src="assets/first-slide/im15.jpg" id="im3">
-                            <img src="assets/first-slide/im16.jpg" id="im4">
+                            <img src="assets/first-slide/im5.png" id="im1">
+                            <img src="assets/first-slide/im6.png" id="im2">
+                            <img src="assets/first-slide/im7.png" id="im3">
+                            <img src="assets/first-slide/im8.png" id="im4">
                             <div class="slide-text">
                                 <h1>Display Stands</h1>
                                 <p>Showcase your products in style with our elegant display stands, 
@@ -109,10 +118,10 @@
                     </div>
                     <div class="slide third-slide">
                         <div class="slide-images">
-                            <img src="assets/first-slide/im5.jpg" id="im1">
-                            <img src="assets/first-slide/im6.jpg" id="im2">
-                            <img src="assets/first-slide/im7.jpg" id="im3">
-                            <img src="assets/first-slide/im8.jpg" id="im4">
+                            <img src="assets/first-slide/im9.png" id="im1">
+                            <img src="assets/first-slide/im10.png" id="im2">
+                            <img src="assets/first-slide/im11.png" id="im3">
+                            <img src="assets/first-slide/im12.png" id="im4">
                             <div class="slide-text">
                                 <h1>Work Desks</h1>
                                 <p>Maximize your space with our durable storage units, designed to organize 
@@ -124,10 +133,10 @@
                     </div>
                     <div class="slide fourth-slide">
                         <div class="slide-images">
-                            <img src="assets/first-slide/im9.jpg" id="im1">
-                            <img src="assets/first-slide/im10.jpg" id="im2">
-                            <img src="assets/first-slide/im11.jpg" id="im3">
-                            <img src="assets/first-slide/im12.jpg" id="im4">
+                            <img src="assets/first-slide/im13.png" id="im1">
+                            <img src="assets/first-slide/im14.png" id="im2">
+                            <img src="assets/first-slide/im15.png" id="im3">
+                            <img src="assets/first-slide/im16.png" id="im4">
                             <div class="slide-text">
                                 <h1>Storage Unit</h1>
                                 <p>Discover the perfect blend of durability and design with our premium work surfaces and tables, 
@@ -176,6 +185,7 @@
             </div>
         </div>
     </div>
+    
     <script src="homepage.js"></script>
 </body>
 </html>

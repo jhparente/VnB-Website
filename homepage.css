@@ -257,7 +257,7 @@ a, li, button{
 }
 
 .page2-button #arrow{
-    font-size: 30px;
+    font-size: 25px;
 }
 
 @keyframes fade {
@@ -298,8 +298,21 @@ a, li, button{
 .project-video{
     width: 100%;
     height: 380px;
+    position: relative;
 }
 
+.project-video .pic-invideo{
+    margin: -350px 26%;
+    max-width: 800px;
+    min-width: 600px;
+    height: auto;
+}
+
+.project-video .pic-invideo img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 
 .project-header{
     width: 500px;
@@ -337,11 +350,12 @@ a, li, button{
 .picture-slider {
     position: relative;
     width: 100%;
-    height: 430px;
+    height: 100%;
     background-color: white;
     overflow: auto;
     overflow: hidden;
     margin-top: 70px;
+    padding: 50px 0;
 }
 
 .slider-container {
@@ -381,7 +395,7 @@ a, li, button{
     background-color: rgba(180,191,178,.5);
     color: white;
     border: none;
-    padding: 20px 10px;
+    padding: 1.5% 0.8%;
     font-size: 18px;
     cursor: pointer;
     border-radius: 4px;
@@ -389,7 +403,7 @@ a, li, button{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 80px;
+    right: 5%;
 }
 
 .next-btn:hover {
@@ -398,7 +412,6 @@ a, li, button{
 
 .slide-images{
     display: flex;
-    margin-left: 3%;
     margin: 0;
     align-items: center;
     padding: 0 1%;
@@ -412,28 +425,29 @@ a, li, button{
 }
 
 .slide #im1{
-    margin-top: 150px;
+    margin-top: 120px;
     margin-left: 0;
 }
 
 .slide #im2{
-    margin-top: -50px;
+    margin-top: -90px;
     margin-left: .3%;
 }
 
 .slide #im3{
-    margin-top: 150px;
+    margin-top: 120px;
     margin-left: .3%;
 }
 .slide #im4{
-    margin-top: -50px;
+    margin-top: -90px;
     margin-left: .3%;
 }
 
 .slide .slide-text{
     width: 300px;
     height: 200px;
-    margin-left: 1.5%;
+    margin-top: 1%;
+    margin-left: 1%;
     text-align: right;
     font-family: "Arimo", sans-serif;
     letter-spacing: 3px;
@@ -504,6 +518,8 @@ a, li, button{
     object-fit: cover;
 }
 
+
+
 body::-webkit-scrollbar {
     width: 5px;
   }
@@ -534,5 +550,77 @@ body::-webkit-scrollbar {
 @media (max-width: 1420px) {
     .page2-button{
         left: 58%;
+    }
+}
+
+@media (max-width: 1255px) {
+
+    .slide-images{
+        padding: 0 .5%;
+    }
+
+    .slide #im2,
+    .slide #im3,
+    .slide #im4{
+        margin-left: -5px;
+    }
+
+    .slide .slide-text{
+        margin-top: 1%;
+    }
+
+    .slide-text h1{
+        font-size: 2.8vw;
+    }
+
+    .slide-text p{
+        font-size: 2.8vw;
+        font-size: 1.3vw;
+    }
+
+}
+
+@media (max-width: 975px){
+    .slide .slide-text{
+        transform: translateY(55px);
+        width: 200px;
+        height: 300px;
+    }
+    .slide-text h1{
+        font-size: 2.3vw;
+    }
+}
+
+@media (max-width: 870px){
+
+    .content-2{
+        width: 280px;
+    }
+    .content-2 h1{
+        font-size: 50px;
+    }
+    .content-2 h2{
+        font-size: 13px;
+        margin-left: 127px;
+    }
+    .content-2 p{
+        font-size: 15px;
+        letter-spacing: 2px;
+        text-align: justify;
+    }
+    .page2-button{
+        width: 200px;
+        height: 45px;
+    }
+    .page2-button #arrow{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 430px) {
+    .project-video .pic-invideo{
+        margin: -250px 25%;
+        width: 50vw;
+        height: auto;
     }
 }

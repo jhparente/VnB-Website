@@ -9,6 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Arimo", sans-serif;
 }
 
 html, body{
@@ -20,7 +21,7 @@ body{
     flex-direction: column;
     position: relative;
     background-color: var(--main-color);
-    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 header{
@@ -31,14 +32,14 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 clamp(100px, 2vw, 100px);
+    padding: 2% 4%;
     z-index: 1000;
-    background-color: var(--main-color); 
-    transition: background-color 0.3s, background-image 0.3s, box-shadow 0.3s;
+    background-color: transparent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 a, li, button{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arimo", sans-serif;
     font-weight: 500;
     font-size: .7rem;
     text-decoration: none;
@@ -70,39 +71,31 @@ a, li, button{
 }
 
 .page1 {
-    height: 110vh;
+    min-height: 100vh;
+    width: 100%;
     position: relative; 
     overflow: hidden;
 }
 
-.page1::before {
-    content: "";
-    position: absolute; 
+.bg-video{
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 59, 13, 0.5); 
-    z-index: 0;
-    scroll-snap-align: start;
 }
 
-.background-video {
-    position: fixed; 
+.background-video { 
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    transform-origin: top center; 
-    transition: transform 0.3s ease-out, opacity 0.3s ease, background-color 0.3s ease; 
+    height: 100vh;
+    object-fit: cover
 }
-
 
 .content{
     width: 100%;
-    position: relative;
+    position: absolute;
     top: 300px;
     padding-left: 7vw;
     opacity: 1; 
@@ -143,19 +136,18 @@ a, li, button{
     margin-top: 8px;
 }
 
-.page2 {
+.page2{
+    width: 99.5w;
+    height: 100vh;
     position: relative;
-    transition: transform 0.3s ease-out;
     background-color: var(--main-color);
+    perspective: 10px;
+    transition: transform 1s ease-out;
     overflow-y: hidden;
     overflow-x: hidden;
-    perspective: 10px;
-    width: 100%;
-    height: 100vh;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    z-index: 1;
-    pointer-events: auto;
+    margin-top: 50px;
 }
 
 .page2-mainContent{
@@ -166,31 +158,31 @@ a, li, button{
 }
 
 .long-image{
-    max-width: 40vw;
-    height: 1000px;
-    position: relative;
+    max-width: 35vw;
+    height: 100%;
+    position: absolute;
     overflow: hidden;
-    margin-top: 400px;
-    margin-left: 3vw;
+    margin-left: 10%;
+    top: 250px;
 }
 
 .long-image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    object-position: center;
 }
-
 
 .content-2{
     position: absolute;
-    top: 330px;
-    left: 900px;
+    top: 250px;
+    margin-left: 70vw;
     display: flex;
     flex-direction: row;
     width: 355.5px;
     flex-wrap: wrap;
     transform: translateZ(-20px) scale(3);
+
 }
 
 .content-2 h1{
@@ -234,19 +226,18 @@ a, li, button{
 
 .page2-button{
     display: flex;
-    width: 200px;
+    width: 300px;
     height: 50px;
-    gap: 5px;
-    transform: translateZ(-5px) scale(1.5);
     position: absolute;
-    top: 900px;
-    left: 63%;
+    top: 750px;
+    left: 55%;
+    gap: 10px;
 }
 
 .page2-button button{
     background-color: rgba(65,100,74,1);
     border: none;
-    
+    padding: 0 10px;
 }
 
 .page2-button button:nth-child(1){
@@ -269,74 +260,63 @@ a, li, button{
     font-size: 30px;
 }
 
-.page3{
-    height: 180vh;
-    background-color: var(--main-color);
-    position: relative;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    animation: fade linear both;
-    animation-timeline: view();
-    animation-range: cover 0  cover 25%;
-    perspective: 10px; 
-    overflow-x: hidden;
-    margin-top: 100px;
-}
-
-
-
-.page3 .page3-projectContent{
-    transform-style: preserve-3d;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 200px;
-    top: 0;
-}
-
-.page3 img{
-    width: 100%;
-    height: 430px;
-    position: absolute;
-    object-fit: cover;
-    top: -120px;
-    transform: translateZ(-4px) scale(1.5);
-    z-index: 10;
-}
-
 @keyframes fade {
     from{
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-100px) translateY(200px);
     }
     to{
         opacity: 1;
         transform: translateX(0);
+        transform: translateY(0);
     }
 }
 
+
+.page3{
+    margin-top: 200px;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    animation: fade ease-in-out both;
+    animation-timeline: view();
+    animation-range: cover 0  cover 25%;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.page3-projectContent{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.project-video{
+    width: 100%;
+    height: 380px;
+}
+
+
 .project-header{
-    position: absolute;
     width: 500px;
-    height: 80px;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    top: 690px;
-    transform: translateZ(-1px) scale(1.2);
-    z-index: 100;
+    margin-top: 150px;
 }
 
 .project-header h1{
-    position: relative;
     color: white;
     font-family: "Arimo", sans-serif;
     letter-spacing: 5px;
     font-size: 45px;
+    display: flex;
+    align-items: center;
 }
 
 .project-header h1:nth-child(2){
@@ -344,23 +324,24 @@ a, li, button{
     color: var(--main-color);
     background-color: white;
     height: 50px;
-    padding-left: 8px;
+    padding: 8px;
 }
 
 .project-header p{
     color: white;
     font-family: "Arimo", sans-serif;
     letter-spacing: 5px;
+    margin-top: 10px;
 }
 
 .picture-slider {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 430px;
     background-color: white;
-    transform: translateZ(3px) scale(.7);
+    overflow: auto;
     overflow: hidden;
-    top: -390px
+    margin-top: 70px;
 }
 
 .slider-container {
@@ -411,7 +392,6 @@ a, li, button{
     right: 80px;
 }
 
-.prev-btn:hover,
 .next-btn:hover {
     background-color: rgba(180,191,178,1);
 }
@@ -419,168 +399,140 @@ a, li, button{
 .slide-images{
     display: flex;
     margin-left: 3%;
+    margin: 0;
+    align-items: center;
+    padding: 0 1%;
 }
 
 .slide-images img{ 
-    max-width: 130px;   
+    width: 13vw; 
+    min-width: 120px;
     height: auto;
     object-fit: cover;
-    display: block;
 }
 
 .slide #im1{
-    margin-top: 300px;
+    margin-top: 150px;
     margin-left: 0;
-    flex-shrink: 1;
 }
+
 .slide #im2{
-    margin-top: 200px;
-    margin-left: 3%;
+    margin-top: -50px;
+    margin-left: .3%;
 }
+
 .slide #im3{
-    margin-top: 300px;
-    margin-left: 6%;
+    margin-top: 150px;
+    margin-left: .3%;
 }
 .slide #im4{
-    margin-top: 200px;
-    margin-left: 9%;
+    margin-top: -50px;
+    margin-left: .3%;
 }
 
 .slide .slide-text{
     width: 300px;
     height: 200px;
-    margin-left: 13.5%;
-    margin-top: 120px;
+    margin-left: 1.5%;
     text-align: right;
     font-family: "Arimo", sans-serif;
     letter-spacing: 3px;
 }
 
-.slide .slide-text h1{
+.slide-text h1{
     font-size: 35px;
     letter-spacing: 3px;
 }
 
-.slide .slide-text p{
+.slide-text p{
     margin-top: 10px;
-    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--main-color);
 }
 
 .page4{
     width: 100%;
-    height: 83vh;
+    height: 100vh;
+    background-color: var(--main-color);
     position: relative;
-    overflow-y: hidden;
-    perspective: 10px;
-    z-index: 20;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 80px;
 }
 
 .highlights{
     height: 100%;
-    transform-style: preserve-3d;
     position: relative;
-    margin-top: 400px;
 }
 
 .highlight-text{
-    margin-top: 150px;
-    font-family: "Arimo", sans-serif;
     color: white;
-    position: absolute;
-    left: -150px;
-    top: -320px;
+    margin-top: 100px;
+    margin-left: 3%;
     letter-spacing: 5px;
-    transform: translateZ(-5px) scale(1.6);
 }
 
 .highlight-text h1{
-    font-size: 30px;
+    font-size: 40px;
 }
+
 .highlight-text h2{
     font-size: 15px;
     font-weight: 100;
 }
 
 .highlight-container{
+    width: 96vw;
+    height: 80%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background-color: white;
-    padding: 30px;
-    transform: translateZ(2px) scale(.8);
+    margin-top: 50px;
 }
 
 .highlight-container div{
-    width: 330px;
+    width: 24%;
     height: 500px;
 }
 
-.highlight-video {
+.highlight-video{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
 }
 
-.sidebar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: var(--main-color);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
+body::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: var(--main-color);
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: rgb(70, 114, 75);
+    border-radius: 6px;
+  }
 
-.smartphone-sidebar{
-    list-style: none;
-}
 
-.smartphone-sidebar li{
-    height: 80px;
-}
-
-.smartphone-sidebar li a{
-    font-size: 1.8rem;
-}
-
-@media (max-width: 1307px) {
-
-    .slide-images{
-        margin-left: 2%;
+@media (max-width: 1470px) {
+    .content-2{
+        margin-left: 80vw;
     }
-    .slide-images img{
-        width: 110px;
+} 
+  
+@media (max-width: 1245px) {
+    .nav-logo{
+        width: 9vw;
     }
     
-    .slide .slide-text h1{
-        font-size: 30px;
-    }
-    
-    .slide .slide-text p{
-        font-size: 15px;
-    }
-
-    .page4{
-        margin-bottom: 10px;
-    }
-
 }
 
-@media (max-width: 1070px) {
-
-    header{
-        padding: 5vw;
+@media (max-width: 1420px) {
+    .page2-button{
+        left: 58%;
     }
-
-    .nav-links li{
-        padding: 0 .5vw;
-    }   
-    
 }

@@ -5,31 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="journey.css">
+    <link rel="stylesheet" href="homepage-responsive.css">
 </head>
 <body>
     <header>
-        <!-- <nav class="sidebar">
-            <ul class="smartphone-sidebar">
-                <li><a href="#">THE JOURNEY</a></li>
-                <li><a href="#">COLLECTIONS</a></li>
-                <li><a href="#">PARTNERS</a></li>
-                <li><a href="#">CONTACT US</a></li>
-                <li><a href="#">MY ACCOUNT</a></li>
-            </ul>
-        </nav> -->
         <nav id="fnav1">
             <ul class="nav-links">
-                <li><a href="#">THE JOURNEY</a></li>
-                <li><a href="#">COLLECTIONS</a></li>
-                <li><a href="#">PARTNERS</a></li>
+                <li class="hide-inSmartphone"><a href="#" onclick="showJourney()">THE JOURNEY</a></li>
+                <li class="hide-inSmartphone"><a href="#">COLLECTIONS</a></li>
+                <li class="hide-inSmartphone"><a href="#">PARTNERS</a></li>
             </ul>
         </nav>
         <nav><img src="assets/VnB Logo1.png" alt="Logo" class="nav-logo"></nav>
         <nav>
             <ul class="nav-links">
+                <li class="hide-inSmartphone"><a href="#">CONTACT US</a></li>
+                <li class="hide-inSmartphone"><a href="#">MY ACCOUNT</a></li>
+                <a class="hide-inSmartphone" href="#"><button class="order-button">ORDER NOW</button></a>
+                <div class="sidebar-button">
+                    <a href="#"><button class="order-button">ORDER NOW</button></a>
+                    <img src="assets/menu-bar.svg" onclick="showSidebar()" class="open-sidebar">
+                    <img src="assets/menu-bar.svg" onclick="closeSidebar()" class="close-sidebar">
+                </div> 
+            </ul>          
+        </nav>
+        <nav class="sidebar">
+            <ul class="smartphone-sidebar">       
+                <li><a href="#" onclick="showJourney()">THE JOURNEY</a></li>
+                <li><a href="#">COLLECTIONS</a></li>
+                <li><a href="#">PARTNERS</a></li>
                 <li><a href="#">CONTACT US</a></li>
                 <li><a href="#">MY ACCOUNT</a></li>
-                <a href="#"><button class="order-button">ORDER NOW</button></a>
             </ul>
         </nav>
     </header>
@@ -185,7 +192,11 @@
             </div>
         </div>
     </div>
+
+    <div class="journey">
+    </div>
     
     <script src="homepage.js"></script>
+    <script src="journey.js"></script>
 </body>
 </html>

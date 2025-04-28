@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="sendEmail.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("C5_aGDvRZjR8gr9p4");
+        })();
+    </script>
+    <style>
+        body::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: var(--main-color);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: rgb(70, 114, 75);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id="fnav1">
+            <ul class="nav-links">
+                <li class="hide-inSmartphone"><a href="#" onclick="showJourney()">THE JOURNEY</a></li>
+                <li class="hide-inSmartphone"><a href="#">COLLECTIONS</a></li>
+                <li class="hide-inSmartphone"><a href="#">PARTNERS</a></li>
+            </ul>
+        </nav>
+        <nav><img src="assets/VnB Logo1.png" alt="Logo" class="nav-logo" onclick="startJourney()"></nav>
+        <nav>
+            <ul class="nav-links">
+                <li class="hide-inSmartphone"><a href="#">CONTACT US</a></li>
+                <li class="hide-inSmartphone"><a href="#">MY ACCOUNT</a></li>
+                <a class="hide-inSmartphone" href="order.html"><button class="order-button">ORDER NOW</button></a>
+                <div class="sidebar-button">
+                    <a href="order.html"><button class="order-button">ORDER NOW</button></a>
+                    <img src="assets/menu-bar.svg" onclick="showSidebar()" class="open-sidebar">
+                    <img src="assets/menu-bar.svg" onclick="closeSidebar()" class="close-sidebar">
+                </div>
+            </ul>
+        </nav>
+        <nav class="sidebar">
+            <ul class="smartphone-sidebar">
+                <li><a href="#" onclick="showJourney()">THE JOURNEY</a></li>
+                <li><a href="#">COLLECTIONS</a></li>
+                <li><a href="#">PARTNERS</a></li>
+                <li><a href="#">CONTACT US</a></li>
+                <li><a href="#">MY ACCOUNT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="sec1">
+        <div class="order-now">
+            <div class="banner">
+                <h1>Make Your Order Now!</h1>
+                <div id="text1">BOOK YOUR SCHEDULE</div>
+                <div class="how-it-works">
+                    <h2>How It Works?</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="checkmark">✓</div>
+                        </div>
+                        <div class="step">
+                            <div class="checkmark">✓</div>
+                        </div>
+                        <div class="step">
+                            <div class="checkmark">✓</div>
+                        </div>
+                    </div>
+                    <div class="step-title">
+                        <div id="title1">
+                            <p>Book your Order and Schedule</p>
+                        </div>
+                        <div id="title2">Wait for Response</div>
+                        <div id="title3">Meet the Designer</div>
+                    </div>
+                </div>
+                <a href="#sec2"><button id="button-order">Book an Order</button></a>
+            </div>
+            <div class="bg-image"></div>
+        </div>
+    </section>
+
+    <section class="sec2" id="sec2">
+        <form id="order-form">
+            <div class="sec2-title">
+                <h1>BOOK YOUR ORDER AND SCHEDULE <i class="bi bi-calendar-event"></i></h1>
+            </div>
+            <h4>FILL THE (*REQUIRED FIELDS)</h4>
+            <div class="ordering-content">
+                <div id="seperator"></div>
+                <h3>CONTACT INFORMATION</h3>
+                <div class="information contact-information">
+                    <div class="contact-details">
+                        <label for="fullname">NAME *</label>
+                        <input type="text" placeholder="(full name)" id="fullname" name="fullname">
+                    </div>
+                    <div class="contact-details">
+                        <label for="email">EMAIL *</label>
+                        <input type="email" placeholder="(******@******)" id="email" name="email">
+                    </div>
+                    <div class="contact-details">
+                        <label for="mobile-number">MOBILE NUMBER *</label>
+                        <input type="tel" placeholder="(09*********)" id="mobile-number" name="mobile-number">
+                    </div>
+                    <div class="contact-details">
+                        <label for="address">ADDRESS *</label>
+                        <input type="text" placeholder="(complete address)" id="address" name="address">
+                    </div>
+                </div>
+
+                <h3>ORDER INFORMATION</h3>
+                <div class="information order-information">
+                    <div class="order-details">
+                        <label for="brand">BRAND *</label>
+                        <input type="text" placeholder="(specific brand)" id="brand" name="brand">
+                        <label for="service-type">SERVICE TYPE</label>
+                        <select name="service-type" id="service-type">
+                            <option value="" disabled selected>-- choose --</option>
+                            <option value="Delivery Installation">Delivery Installation</option>
+                            <option value="Pick Up">Pick Up</option>
+                        </select>
+                    </div>
+                    <div class="order-details">
+                        <label for="type-of-fixture">TYPE OF FIXTURE *</label>
+                        <input type="text" placeholder="(specific brand)" id="type-of-fixture" name="type-of-fixture">
+                    </div>
+                    <div class="order-details">
+                        <div>
+                            <label for="description-for-fixture">FIXTURE <span>DESCRIPTION *</span></label>
+                        </div>
+                        <textarea placeholder="(what do you need/ what do you want/ what is your idea)"
+                            id="description-for-fixture" name="description-for-fixture"></textarea>
+                    </div>
+                    <div class="order-details">
+                        <div>
+                            <label for="fileElem">PREFERRED LOOK <span>OF FURNITURE </span><span>(if there
+                                    is)</span></label>
+                        </div>
+                        <input type="file" id="fileElem" accept="image/*" multiple style="display: none;"
+                            onchange="handleFiles(this)">
+                        <button type="button" id="uploadBtn"
+                            onclick="document.getElementById('fileElem').click()">Select Images</button>
+                    </div>
+                </div>
+
+                <h3>AVAILABLE DATES FOR MEETING</h3>
+                <div class="information date-meeting">
+                    <div class="two-container-reservation">
+                        <div class="scheduler-time">
+                            <div class="available-time">
+                                <label>SELECT DATE AND TIME (available date for meeting)</label>
+                            </div>
+                            <div class="available-time">
+                                <label for="month">DATE 1 *</label>
+                                <select id="month" name="month">
+                                    <option value="" disabled selected>-- month --</option>
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select id="day" name="day">
+                                    <option value="" disabled selected>-- day --</option>
+                                </select>
+                                <select id="year" name="year">
+                                    <option value="" disabled selected>-- year --</option>
+                                </select>
+                            </div>
+                            <div class="available-time">
+                                <label for="time">TIME *</label>
+                                <input type="time" id="time" name="time">
+                            </div>
+                            <div class="available-time">
+                                <label for="month2">DATE 2 *</label>
+                                <select id="month2" name="month2">
+                                    <option value="" disabled selected>-- month --</option>
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select id="day2" name="day2">
+                                    <option value="" disabled selected>-- day --</option>
+                                </select>
+                                <select id="year2" name="year2">
+                                    <option value="" disabled selected>-- year --</option>
+                                </select>
+                            </div>
+                            <div class="available-time">
+                                <label for="time2">TIME *</label>
+                                <input type="time" id="time2" name="time2">
+                            </div>
+                        </div>
+
+                        <div class="summary-time">
+                            <div class="summary-container">
+                                <div class="upper">
+                                    <h5>Your Available Schedules</h5>
+                                    <h5><i class="bi bi-calendar-event"></i></h5>
+                                </div>
+                                <div class="lower">
+                                    <div class="first-date">
+                                        <h5>Date: </h5>
+                                        <h5 id="date-here">the inputted date in id='date' must be put in here</h5>
+                                    </div>
+                                    <div class="first-date">
+                                        <h5>Time: </h5>
+                                        <h5 id="time-here">the inputted time in id='time' must be put in here</h5>
+                                    </div>
+                                    <hr>
+                                    <div class="second-date">
+                                        <h5>Date: </h5>
+                                        <h5 id="date2-here">the inputted date in id='date2' must be put in here</h5>
+                                    </div>
+                                    <div class="second-date">
+                                        <h5>Time: </h5>
+                                        <h5 id="time2-here">the inputted time in id='time2' must be put in here</h5>
+                                    </div>
+                                    <a href="#submit"><button type="button">Done</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="submit">SUBMIT RESERVATION</h3>
+                <div class="information submit-reservation">
+                    <div class="summary-container">
+                        <div class="upper">
+                            <h5>Your Available Schedules</h5>
+                            <h5><i class="bi bi-calendar-event"></i></h5>
+                        </div>
+                        <div class="lower">
+                            <div class="first-date">
+                                <h5>Date: </h5>
+                                <h5 id="submit-date-here">the inputted date in id='date' must be put in here</h5>
+                            </div>
+                            <div class="first-date">
+                                <h5>Time: </h5>
+                                <h5 id="submit-time-here">the inputted time in id='time' must be put in here</h5>
+                            </div>
+                            <hr>
+                            <div class="second-date">
+                                <h5>Date: </h5>
+                                <h5 id="submit-date2-here">the inputted date in id='date2' must be put in here</h5>
+                            </div>
+                            <div class="second-date">
+                                <h5>Time: </h5>
+                                <h5 id="submit-time2-here">the inputted time in id='time2' must be put in here</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" id="submit-form-button" onclick="sendMail(event)">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+
+    <script src="smoothSrolling.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="order.js"></script>
+
+</body>
+
+</html>

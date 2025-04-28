@@ -1,14 +1,10 @@
 const journey = document.querySelector('.journey');
 
-
 journey.style.display = 'none';
-
-
-
 
 let journeyStarted = false;
 
-
+// header logic
 function initPageBehavior() {
     const page1 = document.querySelector('.page1');
     const page2 = document.querySelector('.page2');
@@ -84,18 +80,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
 // Slider logic
 const nextBtn = document.querySelector(".next-btn");
 const sliderTrack = document.querySelector(".slider-track");
 const slides = document.querySelectorAll(".slide");
 let currentIndex = 0;
 
-
 nextBtn.addEventListener("click", () => {
     currentIndex++;
-    if (currentIndex >= slides.length) {    
+    if (currentIndex >= slides.length) {
         currentIndex = 0;
     }
     sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -107,14 +100,11 @@ let scrollAmount = 0;
 let isScrolling = false;
 let inertia = 0;
 let ticking = false;
-const speedMultiplier = 0.05;
-const damping = 0.91;
-
-
+const speedMultiplier = 0.06; 
+const damping = 0.91; 
 const page2 = document.querySelector('.page2');
 page2.style.maxHeight = '100vh';
 page2.style.scrollBehavior = 'smooth';
-
 
 function canScroll(element, deltaY) {
     if (element === window || element === document.documentElement || element === document.body) {
@@ -125,16 +115,13 @@ function canScroll(element, deltaY) {
     return false;
 }
 
-
 window.addEventListener('wheel', function (e) {
     const hovered = document.elementFromPoint(e.clientX, e.clientY);
     const overPage2 = page2.contains(hovered);
 
-
     e.preventDefault();
     scrollAmount += e.deltaY * speedMultiplier;
     isScrolling = true;
-
 
     if (!ticking) {
         animateScroll();
@@ -142,11 +129,9 @@ window.addEventListener('wheel', function (e) {
     }
 }, { passive: false });
 
-
 function animateScroll() {
     let delta = scrollAmount || inertia;
     let target;
-
 
     const hovered = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
     const overPage2 = page2.contains(hovered);
@@ -154,33 +139,31 @@ function animateScroll() {
 
 
     if (overPage2 && !page1StillVisible && canScroll(page2, delta)) {
-        target = page2;
+        target = page2; 
     } else {
         target = window;
     }
 
-
     if (Math.abs(scrollAmount) > 0.1) {
         target.scrollBy({ top: scrollAmount, behavior: 'instant' });
-        inertia = scrollAmount;
+        inertia = scrollAmount; 
         scrollAmount *= damping;
     } else if (isScrolling) {
         isScrolling = false;
     } else if (Math.abs(inertia) > 0.1) {
         target.scrollBy({ top: inertia, behavior: 'instant' });
-        inertia *= damping;
+        inertia *= damping; 
     } else {
         ticking = false;
         return;
     }
-
 
     requestAnimationFrame(animateScroll);
 }
 
 
 // smartphone sidebar
-function showSidebar(){
+function showSidebar() {
     const sidebar = document.querySelector('.sidebar');
     const openSidebar = document.querySelector('.open-sidebar');
     const closeSidebar = document.querySelector('.close-sidebar');
@@ -199,7 +182,7 @@ function showSidebar(){
 }
 
 
-function closeSidebar(){
+function closeSidebar() {
     const sidebar = document.querySelector('.sidebar');
     const openSidebar = document.querySelector('.open-sidebar');
     const closeSidebar = document.querySelector('.close-sidebar');
@@ -250,4 +233,53 @@ window.addEventListener('resize', function () {
         openSidebar.style.display = 'flex';
         closeSidebar.style.display = 'none';
     }
+});
+
+new TypeIt("#type1", {
+    strings: "Specializes in providing customer shelves,",
+    speed: 40,
+    waitUntilVisible: true,
+    cursor: false,
+    startDelay: 2200,
+    afterComplete: function (step, instance) {
+        new TypeIt("#type2", {
+            strings: "modules, iron gates, railings, and more.",
+            speed: 40,
+            waitUntilVisible: true,
+        }).go();
+    }
+}).go();
+
+ScrollReveal().reveal('#project-line1, #project-line2', {
+    origin: 'left',
+    distance: '50px',
+    duration: 300,
+    easing: 'ease-in-out',
+    reset: true,
+    viewFactor: 1
+})
+
+ScrollReveal().reveal('#project-line2', {
+    origin: 'right'
+})
+
+ScrollReveal().reveal('.project-header p', {
+    delay: 200,
+    distance: '1px',
+    duration: 300,
+    easing: 'ease-in-out',
+    reset: true
+})
+
+//loading-screen
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loadingScreen = document.querySelector('.loading-screen');
+        loadingScreen.style.opacity = 0;
+    }, 1800);
+
+    setTimeout(() => {
+        const loadingScreen = document.querySelector('.loading-screen');
+        loadingScreen.style.display = 'none';
+    }, 2300);
 });

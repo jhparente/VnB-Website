@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VnB Display Fixtures Fabrication</title>
     <link rel="stylesheet" href="homepage.css">
     <link rel="stylesheet" href="journey.css">
     <link rel="stylesheet" href="homepage-responsive.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
+
 </head>
 <body>
+    <div class="loading-screen">
+        <div class="loading-image">
+            <img src="assets/VnB Logo1.png" alt="">
+        </div>
+    </div>
     <header>
         <nav id="fnav1">
             <ul class="nav-links">
@@ -17,14 +25,14 @@
                 <li class="hide-inSmartphone"><a href="#">PARTNERS</a></li>
             </ul>
         </nav>
-        <nav><img src="assets/VnB Logo1.png" alt="Logo" class="nav-logo"></nav>
+        <nav><img src="assets/VnB Logo1.png" alt="Logo" class="nav-logo" onclick="startJourney()"></nav>
         <nav>
             <ul class="nav-links">
                 <li class="hide-inSmartphone"><a href="#">CONTACT US</a></li>
                 <li class="hide-inSmartphone"><a href="#">MY ACCOUNT</a></li>
-                <a class="hide-inSmartphone" href="#"><button class="order-button">ORDER NOW</button></a>
+                <a class="hide-inSmartphone" href="order.html"><button class="order-button">ORDER NOW</button></a>
                 <div class="sidebar-button">
-                    <a href="#"><button class="order-button">ORDER NOW</button></a>
+                    <a href="order.html"><button class="order-button">ORDER NOW</button></a>
                     <img src="assets/menu-bar.svg" onclick="showSidebar()" class="open-sidebar">
                     <img src="assets/menu-bar.svg" onclick="closeSidebar()" class="close-sidebar">
                 </div> 
@@ -51,8 +59,8 @@
             <h1>GO THE</h1>
             <h1>EXTRA MILE</h1>
             <hr id="line1">
-            <p>Specializes in providing customer shelves,</p>
-            <p>modules, iron gates, railings, and more.</p>
+            <p id="type1"></p>
+            <p id="type2"></p>
         </div>
     </div>
     <div class="page2">
@@ -78,16 +86,16 @@
         <div class="page3-projectContent">
             <div class="project-video">
                 <video autoplay muted loop class="highlight-video">
-                    <source src="assets/the-projects-video1.mp4" type="video/mp4">
+                    <source src="assets/the-projects-video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <div class="pic-invideo">
+                <!-- <div class="pic-invideo">
                     <img src="assets/VnB Logo 2.png" alt="">
-                </div>
+                </div> -->
             </div>
             <div class="project-header">
-                <h1>THE</h1>
-                <h1>PROJECTS</h1>
+                <h1 id="project-line1">THE</h1>
+                <h1 id="project-line2">PROJECTS</h1>
                 <p>DISPLAY FIXTURES</p>
             </div>
         </div>

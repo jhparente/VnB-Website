@@ -28,18 +28,32 @@ function showJourney() {
 
         journeyStarted = true;
     } else {
-        journey.style.transform = 'translateY(-100%)';
-        setTimeout(() => {
-            journey.style.display = 'none';
-            page1.style.display = 'block';
-            page2.style.display = 'block';
-            page3.style.display = 'block';
-            page4.style.display = 'flex';
-            content.style.display = 'block';
-            header.style.boxShadow = 'none';
-            header.style.backgroundColor = 'transparent';
-        }, 300); 
-
-        journeyStarted = false;
+        startJourney();
     }
 }
+
+function startJourney() {
+    const journey = document.querySelector('.journey');
+    const page1 = document.querySelector('.page1');
+    const page2 = document.querySelector('.page2');
+    const page3 = document.querySelector('.page3');
+    const page4 = document.querySelector('.page4');
+    const content = document.querySelector('.content');
+    const header = document.querySelector('header');
+
+    journey.style.transform = 'translateY(-100%)';
+    
+    setTimeout(() => {
+        journey.style.display = 'none';
+        page1.style.display = 'block';
+        page2.style.display = 'block';
+        page3.style.display = 'block';
+        page4.style.display = 'flex';
+        content.style.display = 'block';
+        header.style.boxShadow = 'none';
+        header.style.backgroundColor = 'transparent';
+    }, 300); 
+
+    journeyStarted = false;
+}
+

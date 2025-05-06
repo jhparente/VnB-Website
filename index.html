@@ -5,34 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VnB Display Fixtures Fabrication</title>
     <link rel="stylesheet" href="homepage.css">
-    <link rel="stylesheet" href="journey.css">
+    <link rel="stylesheet" href="partner.css">
     <link rel="stylesheet" href="homepage-responsive.css">
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
 
 </head>
 <body>
-    <div class="loading-screen">
+    <!-- <div class="loading-screen">
         <div class="loading-image">
             <img src="assets/VnB Logo1.png" alt="">
         </div>
-    </div>
+    </div> -->
     <header>
         <nav id="fnav1">
             <ul class="nav-links">
-                <li class="hide-inSmartphone"><a href="#" onclick="showJourney()">THE JOURNEY</a></li>
+                <li class="hide-inSmartphone"><a href="#">THE JOURNEY</a></li>
                 <li class="hide-inSmartphone"><a href="#">COLLECTIONS</a></li>
-                <li class="hide-inSmartphone"><a href="#">PARTNERS</a></li>
+                <li class="hide-inSmartphone"><a href="#" onclick="showPartner()">PARTNERS</a></li>
             </ul>
         </nav>
-        <nav><img src="assets/VnB Logo1.png" alt="Logo" class="nav-logo" onclick="startJourney()"></nav>
+        <nav><img src="assets/VnB Logo1.png" alt="Logo" class="nav-logo" onclick="startPartner()"></nav>
         <nav>
             <ul class="nav-links">
                 <li class="hide-inSmartphone"><a href="#">CONTACT US</a></li>
                 <li class="hide-inSmartphone"><a href="#">MY ACCOUNT</a></li>
                 <a class="hide-inSmartphone" href="order.html"><button class="order-button">ORDER NOW</button></a>
                 <div class="sidebar-button">
-                    <a href="order.html"><button class="order-button">ORDER NOW</button></a>
+                    <a href="order.html"><button class="order-button" id="order-btn-p">ORDER NOW</button></a>
                     <img src="assets/menu-bar.svg" onclick="showSidebar()" class="open-sidebar">
                     <img src="assets/menu-bar.svg" onclick="closeSidebar()" class="close-sidebar">
                 </div> 
@@ -40,9 +40,9 @@
         </nav>
         <nav class="sidebar">
             <ul class="smartphone-sidebar">       
-                <li><a href="#" onclick="showJourney()">THE JOURNEY</a></li>
+                <li><a href="#">THE JOURNEY</a></li>
                 <li><a href="#">COLLECTIONS</a></li>
-                <li><a href="#">PARTNERS</a></li>
+                <li><a href="#" onclick="showPartner()">PARTNERS</a></li>
                 <li><a href="#">CONTACT US</a></li>
                 <li><a href="#">MY ACCOUNT</a></li>
             </ul>
@@ -59,8 +59,7 @@
             <h1>GO THE</h1>
             <h1>EXTRA MILE</h1>
             <hr id="line1">
-            <p id="type1"></p>
-            <p id="type2"></p>
+            <p id="type1">Specializes in providing customer shelves, modules, iron gates, railings, and more.</p>
         </div>
     </div>
     <div class="page2">
@@ -167,6 +166,9 @@
             </div>
         </div>
     </div>
+    <div id="swipe">SWIPE TO INTERACT
+        <img src="assets/swipe.png" alt="">
+    </div>
     <div class="page4">
         <div class="highlights">
             <div class="highlight-text">
@@ -192,7 +194,7 @@
                     </video>
                 </div>
                 <div>
-                    <video autoplay muted loop class="highlight-video">
+                    <video autoplay muted loop class="highlight-video"> 
                         <source src="assets/highlights/vid4.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -201,10 +203,17 @@
         </div>
     </div>
 
-    <div class="journey">
+    <div class="partner">
+        <div class="partner-logo">
+            <div class="logos"><img src="assets/logo-pictures/wrangler.png" alt="logo"></div>
+            <div class="logos"><img src="assets/logo-pictures/fitflop.png" alt="logo"></div>
+            <div class="logos"><img src="assets/logo-pictures/mister donut.png" alt="logo"></div>
+            <div class="logos"><img src="assets/logo-pictures/newtrends inc.png" alt="logo"></div>
+            <div class="logos"><img src="assets/logo-pictures/bli.png" alt="logo"></div>
+            <div class="logos"><img src="assets/logo-pictures/zapp donuts.png" alt="logo"></div>     
+        </div>
     </div>
     
     <script src="homepage.js"></script>
-    <script src="journey.js"></script>
 </body>
 </html>

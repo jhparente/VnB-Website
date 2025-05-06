@@ -256,3 +256,9 @@ timeInput2.addEventListener('input', updateSubmitReservation);
 updateSubmitReservation();
 
 updateSummary();
+
+
+// onclick homepage
+function homepage() {
+    window.location.href = 'index.html';
+}

@@ -318,7 +318,10 @@ label{
 .order-details:first-child label:nth-child(3){
     margin-left: 10%;
 }
-.order-details:first-child #input-service-type{
+#br1{
+    display: none;
+}
+.order-details:nth-child(1) span{
     margin-left: 8%;
 }
 
@@ -397,6 +400,21 @@ label{
 }
 .available-time{
     margin-bottom: 8%;
+}
+#br2{
+    display: none;
+}
+#br3{
+    display: none;
+}
+#br4{
+    display: none;
+}
+#br5{
+    display: none;
+}
+#hr2{
+    display: none;
 }
 .available-time select{
     width: 20%;

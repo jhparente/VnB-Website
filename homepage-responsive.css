@@ -137,6 +137,11 @@
 
 @media (max-width: 430px) {
 
+    .loading-screen .loading-image {
+        width: 50%;
+        height: 50%;
+      }
+
     .nav-logo {
         left: 25px;
     }

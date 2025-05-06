@@ -38,3 +38,22 @@
   height: 80%;
 }
 
+.partner::-webkit-scrollbar {
+  width: 5px;
+}
+
+.partner::-webkit-scrollbar-track {
+  background: var(--main-color);
+}
+
+.partner::-webkit-scrollbar-thumb {
+  background: rgb(70, 114, 75);
+  border-radius: 6px;
+}
+
+@media (max-width: 430px) {
+  .partner{
+    width: 23%;
+  }
+}
+

@@ -13,6 +13,10 @@
   color: white;
 }
 
+li:hover{
+  cursor: pointer;
+}
+
 html,
 body {
   scroll-behavior: smooth;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="homepage.css">
     <link rel="stylesheet" href="partner.css">
     <link rel="stylesheet" href="homepage-responsive.css">
+    <link rel="stylesheet" href="contact.css">
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
 
@@ -28,7 +29,7 @@
         <nav><img src="assets/VnB Logo1.png" alt="Logo" class="nav-logo" onclick="startPartner()"></nav>
         <nav>
             <ul class="nav-links">
-                <li class="hide-inSmartphone"><a href="#">CONTACT US</a></li>
+                <li class="hide-inSmartphone"><a onclick="showContact()">CONTACT US</a></li>
                 <li class="hide-inSmartphone"><a href="#">MY ACCOUNT</a></li>
                 <a class="hide-inSmartphone" href="order.html"><button class="order-button">ORDER NOW</button></a>
                 <div class="sidebar-button">
@@ -43,7 +44,7 @@
                 <li><a href="#">THE JOURNEY</a></li>
                 <li><a href="#">COLLECTIONS</a></li>
                 <li><a href="#" onclick="showPartner()">PARTNERS</a></li>
-                <li><a href="#">CONTACT US</a></li>
+                <li><a href="#" onclick="showContact()">CONTACT US</a></li>
                 <li><a href="#">MY ACCOUNT</a></li>
             </ul>
         </nav>
@@ -203,6 +204,8 @@
         </div>
     </div>
 
+
+    <!-- show partner -->
     <div class="partner">
         <div class="partner-logo">
             <div class="logos"><img src="assets/logo-pictures/wrangler.png" alt="logo"></div>
@@ -213,7 +216,13 @@
             <div class="logos"><img src="assets/logo-pictures/zapp donuts.png" alt="logo"></div>     
         </div>
     </div>
+
+    <!-- show contact -->
+    <div class="contact">
+        
+    </div>
     
     <script src="homepage.js"></script>
+    
 </body>
 </html>

@@ -26,6 +26,10 @@ body{
     font-family: "Arimo", sans-serif;
 }
 
+li:hover{
+    cursor: pointer;
+}
+
 .sec1{
     background-color: var(--main-color);
     width: 100%;

@@ -1,7 +1,9 @@
 const partner = document.querySelector(".partner");
 partner.style.display = "none";
-
 let partnerStarted = false;
+const contact = document.querySelector(".contact");
+contact.style.display = "none";
+let contactStarted = false;
 
 function initPageBehavior() {
   const page1 = document.querySelector(".page1");
@@ -17,6 +19,7 @@ function initPageBehavior() {
 
   function updateHeaderStyle() {
     if (partnerStarted) return;
+    if (contactStarted) return;
 
     const page1Height = page1.offsetHeight;
     const scrollPosition = window.scrollY;
@@ -326,6 +329,17 @@ function closeSidebar() {
       header.style.boxShadow = "none";
     }
   }
+  if (!contactStarted) {
+    const page1Height = document.querySelector(".page1").offsetHeight;
+    const scrollPosition = window.scrollY;
+    const scrollPercent = (scrollPosition / page1Height) * 100;
+
+    if (scrollPercent >= 55) {
+      header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.5)";
+    } else {
+      header.style.boxShadow = "none";
+    }
+  }
 }
 
 window.addEventListener("resize", function () {
@@ -437,6 +451,7 @@ function showPartner() {
   const page3 = document.querySelector('.page3');
   const page4 = document.querySelector('.page4');
   const content = document.querySelector('.content');
+  const contact = document.querySelector(".contact");
 
 
   closeSidebar();
@@ -448,6 +463,7 @@ function showPartner() {
       page3.style.display = 'none';
       page4.style.display = 'none';
       content.style.display = 'none';
+      contact.style.display = 'none';
 
 
       header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)';
@@ -462,6 +478,7 @@ function showPartner() {
       partnerStarted = true;
   } else {
       startPartner();
+      startContact();
   }
 }
 
@@ -491,3 +508,62 @@ function startPartner() {
   partnerStarted = false;
 }
 
+function updateHeaderStyleContact() {
+  if (partnerStarted) return;
+  if (contactStarted) return;
+
+  const page1Height = page1.offsetHeight;
+  const scrollPosition = window.scrollY;
+  const scrollPercent = (scrollPosition / page1Height) * 100;
+
+  if (scrollPercent >= 55) {
+    header.style.backgroundColor = "rgba(5, 68, 13, 1)";
+    header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.5)";
+    header.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+  } else {
+    header.style.backgroundColor = "transparent";
+    header.style.boxShadow = "none";
+  }
+}
+
+// show contact
+function showContact() {
+  const contact = document.querySelector(".contact");
+  const header = document.querySelector("header");
+  const partner = document.querySelector(".partner");
+
+  closeSidebar();
+
+  if (!contactStarted) {
+    header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.5)";
+    header.style.backgroundColor = "rgba(5, 68, 13, 1)";
+    header.style.boxSizing = "border-box";
+
+    contact.style.display = "flex";
+    contact.style.transform = "translateY(-100%)";
+    void contact.offsetHeight;
+    contact.style.transform = "translateY(0)";
+
+    contactStarted = true;
+  } else {
+    startContact();
+  }
+}
+
+function startContact() {
+  const contact = document.querySelector(".contact");
+  const header = document.querySelector("header");
+  const partner = document.querySelector(".partner");
+
+  contact.style.transform = 'translateY(-100%)';
+
+  setTimeout(() => {
+    
+    contact.style.display = "none";
+
+  }, 300);
+
+  contactStarted = false;
+  header.style.display = 'transparent';
+  updateHeaderStyleContact();
+}

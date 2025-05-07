@@ -52,7 +52,7 @@
   border-radius: 6px;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 435px) {
   .partner{
     width: 23%;
   }

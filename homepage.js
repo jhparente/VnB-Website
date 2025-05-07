@@ -329,6 +329,7 @@ function closeSidebar() {
       header.style.boxShadow = "none";
     }
   }
+
   if (!contactStarted) {
     const page1Height = document.querySelector(".page1").offsetHeight;
     const scrollPosition = window.scrollY;
@@ -506,6 +507,7 @@ function startPartner() {
   }, 300); 
 
   partnerStarted = false;
+  startContact();
 }
 
 function updateHeaderStyleContact() {
@@ -558,12 +560,10 @@ function startContact() {
   contact.style.transform = 'translateY(-100%)';
 
   setTimeout(() => {
-    
     contact.style.display = "none";
+    contactStarted = false;
+    header.style.boxShadow = "none";
+    header.style.backgroundColor = "transparent";
+  }, 200);
 
-  }, 300);
-
-  contactStarted = false;
-  header.style.display = 'transparent';
-  updateHeaderStyleContact();
 }

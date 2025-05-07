@@ -31,15 +31,10 @@ function startContact() {
   const header = document.querySelector("header");
   const partner = document.querySelector(".partner");
 
-  contact.style.transform = 'translateY(-100%)';
+  contact.style.transform = "translateY(-100%)";
 
   setTimeout(() => {
-    
     contact.style.display = "none";
-    partner.style.display = "none";
+    contactStarted = false;
   }, 300);
-
-  contactStarted = false;
-  header.style.display = 'transparent';
-  updateHeaderStyleContact();
 }

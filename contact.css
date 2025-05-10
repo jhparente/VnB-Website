@@ -79,3 +79,76 @@
   height: 55%;
 }
 
+@media (max-width: 435px) {
+  .contact{
+    height: 80vh;
+  }
+  #hr5{
+    margin: 3% 0;
+    width: 80vw;
+  }
+  #first-text{
+    margin-top: 3vw;
+    width: 82vw;
+    font-size: 3vw;
+  }
+  #second-text h1{
+    font-size: 7vw;
+  }
+  #third-text h2{
+    font-size: 3.5vw;
+  }
+  #fourth-text{
+    display: flex;
+    flex-direction: row;
+    width: 95vw;
+    text-align: center;
+    margin: 3% 0;
+  }
+  #fourth-text i{
+    font-size: 5vw;
+  }
+  #fourth-text h3{
+    font-weight: 300;
+    font-size: 3.5vw;
+  }
+  #fifth-text h3{
+    font-weight: 300;
+    font-size: 3.5vw;
+  }
+  #sixth-text h3{
+    font-weight: 300;
+    font-size: 3.5vw;
+  }
+  #seventh-text h3{
+    font-weight: 300;
+    font-size: 3.5vw;
+    margin-top: 10%;
+  }
+  #eight-text h3{
+    font-weight: 300;
+    font-size: 3.5vw;
+  }
+  #hr6{
+    margin: 5% 0;
+    width: 76vw;
+  }
+  #ninth-text h3{
+    font-size: 3.5vw;
+    margin-top: -10%;
+  }
+  #social-media-icon{
+    display: flex;
+    flex-direction: row;
+    width: 10vw;
+    justify-content: center;
+    margin-top: 2%;
+    gap: 10px;
+  }
+  #social-media-icon img{
+    object-fit: contain;
+    width: 90%;
+    height: 90%;
+  }
+}
+

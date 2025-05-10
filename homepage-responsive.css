@@ -1,3 +1,8 @@
+:root {
+    --main-color: 	rgb(5, 68, 13);
+    --background-color: 	rgb(245, 240, 225);
+  }
+
 @media (max-width: 1080px) {
     .nav-links {
         z-index: 1;
@@ -352,11 +357,13 @@
 
     #swipe{
         display: block;
+        color: var(--main-color);
     }
     #swipe img{
         width: 30px;
         height: 30px;
         margin-left: 2vw;
+        color: var(--main-color);
     }
 
     .page4{

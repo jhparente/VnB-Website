@@ -94,9 +94,9 @@ let touchEndX = 0;
 let touchStartTime = 0;
 let isSwiping = false;
 const TRANSITION_DURATION = 1000;
-const SWIPE_THRESHOLD = 50; // Minimum distance to consider a swipe
-const SWIPE_TIME_THRESHOLD = 500; // Maximum time for a swipe gesture
-const MIN_SWIPE_DISTANCE = 30; // Minimum horizontal movement to start tracking
+const SWIPE_THRESHOLD = 50;
+const SWIPE_TIME_THRESHOLD = 500; 
+const MIN_SWIPE_DISTANCE = 30; 
 
 slides[currentIndex].classList.add("active");
 
@@ -124,13 +124,13 @@ sliderTrack.addEventListener(
       const touchX = e.changedTouches[0].screenX;
       const diff = touchStartX - touchX;
 
-      // Only start tracking if horizontal movement exceeds threshold
+
       if (Math.abs(diff) > MIN_SWIPE_DISTANCE) {
         isSwiping = true;
       }
 
       if (isSwiping) {
-        e.preventDefault(); // Prevent vertical scroll when swiping horizontally
+        e.preventDefault(); 
         sliderTrack.style.transition = "none";
         sliderTrack.style.transform = `translateX(calc(-${
           currentIndex * 100
@@ -147,11 +147,10 @@ sliderTrack.addEventListener(
     touchEndX = e.changedTouches[0].screenX;
     const touchEndTime = Date.now();
 
-    // Only handle as swipe if we were actively tracking a swipe gesture
     if (isSwiping) {
       handleSwipe(touchEndTime - touchStartTime);
     }
-    isSwiping = false; // Reset swipe flag
+    isSwiping = false; 
   },
   { passive: true }
 );
@@ -167,7 +166,6 @@ function handleSwipe(swipeDuration) {
       goToSlide(currentIndex - 1);
     }
   } else {
-    // Return to current position if swipe wasn't sufficient
     sliderTrack.style.transition = `transform ${
       TRANSITION_DURATION / 2
     }ms ease-out`;
@@ -180,10 +178,8 @@ function goToSlide(index) {
 
   isTransitioning = true;
 
-  // Update slide classes for fade effect
   slides[currentIndex].classList.remove("active");
 
-  // Handle wrap-around
   if (index >= slides.length) {
     currentIndex = 0;
   } else if (index < 0) {
@@ -192,14 +188,11 @@ function goToSlide(index) {
     currentIndex = index;
   }
 
-  // Apply the transform with slower transition
   sliderTrack.style.transition = `transform ${TRANSITION_DURATION}ms cubic-bezier(0.22, 0.61, 0.36, 1)`;
   sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-  // Update active slide
   slides[currentIndex].classList.add("active");
 
-  // Reset transitioning flag after animation completes
   setTimeout(() => {
     isTransitioning = false;
   }, TRANSITION_DURATION);
@@ -287,7 +280,6 @@ function animateScroll() {
   requestAnimationFrame(animateScroll);
 }
 
-// Sidebar Toggle Functions
 function showSidebar() {
   const sidebar = document.querySelector(".sidebar");
   const openSidebar = document.querySelector(".open-sidebar");

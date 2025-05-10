@@ -233,7 +233,7 @@ li:hover{
 }
 
 .ordering-content h3{
-    color: white;
+    color: var(--main-color);
     margin-top: 1%;
     margin-bottom: 1%;
     font-size: 1.1vw;

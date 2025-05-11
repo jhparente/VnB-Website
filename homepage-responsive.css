@@ -1,5 +1,5 @@
 :root {
-    --main-color: 	rgb(5, 68, 13);
+    --main-color: 	rgb(15, 68, 13);
     --background-color: 	rgb(245, 240, 225);
   }
 
@@ -127,7 +127,7 @@
         min-width: 70vw;
     }
     .content p{
-        width: 80vw;
+        width: 40vw;
     }
 }
 

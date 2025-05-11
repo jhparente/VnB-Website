@@ -370,7 +370,6 @@ document.addEventListener("click", function (e) {
 new TypeIt("#type1", {
   speed: 40,
   waitUntilVisible: true,
-  cursor: true,
   startDelay: 2200,
 }).go();
 

@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --main-color: rgb(15, 68, 13);
+  --background-color: rgb(245, 240, 225);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arimo", sans-serif;
+}
+
+body {
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.signup {
+  width: 70vw;
+  height: 75vh;
+  background-color: var(--main-color);
+  box-shadow: 0 4px 15px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+
+.left-side {
+  width: 50%;
+  height: 100%;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.left-side h1 {
+  color: rgb(7, 42, 6);
+  font-weight: bolder;
+  margin-left: 10%;
+  font-size: 2.3vw;
+}
+#cappucina {
+  margin-left: 15%;
+  margin-top: 2%;
+  width: 40%;
+}
+#cappucina h3 {
+  font-size: 1vw;
+  font-weight: 100;
+  color: green;
+  margin-top: 3%;
+}
+#cappucina input {
+  width: 20vw;
+  font-size: 1vw;
+  padding: 2% 5%;
+  border: 2px solid green;
+  border-radius: 6px;
+  margin-top: 3%;
+}
+
+#remember {
+  display: grid;
+  grid-template-columns: 1vw 20vw;
+  margin-top: 10%;
+  margin-left: 2%;
+  display: flex;
+  align-items: center;
+}
+#remember div:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#remember div:nth-child(1) input {
+  width: 130%;
+  height: 130%;
+  accent-color: green;
+  transform: scale(1.2);
+}
+
+#remember div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+  margin-top: -3px;
+}
+#remember div:nth-child(2) h3 {
+  font-size: 0.7vw;
+  color: black;
+  font-weight: 600;
+}
+#sgnup-btn button {
+  margin-top: 15%;
+  width: 20vw;
+  font-size: 0.8vw;
+  padding: 2% 5%;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(11, 109, 11);
+  font-weight: 800;
+  color: white;
+  padding: 5% 0;
+}
+#sgnup-btn button:hover {
+  cursor: pointer;
+}
+#existing-user {
+  font-size: 0.8vw !important;
+}
+
+#existing-user span a {
+  color: rgb(15, 68, 13);
+  text-decoration: none;
+}
+
+#existing-user span:hover {
+  cursor: pointer;
+}
+
+.right-side {
+  width: 50%;
+  height: 100%;
+  background-image: url(assets/desk.png);
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 25% 75%;
+}
+
+#grid1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#grid1 img {
+  object-fit: contain;
+  width: 13vw;
+  min-width: 100px;
+}
+#grid2 #text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 8%;
+  margin-top: 10%;
+}
+#grid2 div {
+  display: flex;
+  flex-direction: row;
+}
+#grid2 h1 {
+  color: white;
+  font-size: 5vw;
+  font-weight: 900;
+  font-family: "Arimo", sans-serif;
+}
+#grid2 div #teluk {
+  font-size: 4vw;
+  margin-top: 3%;
+}
